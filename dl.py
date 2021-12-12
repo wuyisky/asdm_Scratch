@@ -40,10 +40,15 @@ print('Download scratch-desktop for macOS done.')
 
 # Get Scratch Version
 
-fl = open("scratch-version","w+")
+fl = open("./output/scratch-version","w+")
 fl.write("")
 getVersion = requests.get('https://downloads.scratch.mit.edu/desktop/Scratch%20Setup.exe', allow_redirects=False)
-version = getVersion.headers['location'].split('%20')[1]
-fl.write(version)
-fl.close()
-print('Get version done. version :', version, '. Cost',getVersion.elapsed.total_seconds(),'sec.')
+try:
+    version = getVersion.headers['location'].split('/')[4].split('-')[1]
+    fl.write(version)
+    fl.close()
+    print('Get version done. Scratch Version: ' + version)
+except:
+    print('Get version failed.')
+    fl.write('unknown')
+    fl.close()
