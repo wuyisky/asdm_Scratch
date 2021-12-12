@@ -38,6 +38,6 @@ jobs:
       uses: EndBug/add-and-commit@v4
       with:
         message: "AUTO COMMIT SCRATCH VERSION INFO"
-        add: "./output/scratch-win.exe,./output/scratch-mac.dmg,./output/scratch-version"
+        add: "output"
       env:
         GITHUB_TOKEN: ${{ secrets.PUBLISH }}
